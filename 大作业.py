@@ -27,23 +27,23 @@ while y<10:
     web.find_element_by_xpath('//*[@id="yw0"]/li[last()-1]/a').click()
     y=y+1;
 #使用jieba对获取到的text进行分析
-# m=1;
-# while m<118 :
-#     text = ''
-#     with open('文书text/裁判文书_%s.txt'% m,'r') as inf:
-#         text=inf.read()
-#     words = jieba.cut(text)
-#     result=jieba.analyse.extract_tags(text, topK=20, withWeight=False, allowPOS=())
-#     seg_list = pseg.cut(text)
-#     words = jieba.tokenize(text)
-#     for tk in words:
-#         print("word:" + tk[0] +
-#               " start:" + str(tk[1]) +
-#               " end:" + str(tk[2]))
-#         #将分析好的文本转为json
-#     d=dict(zip(seg_list,words))
-#     s = json.dumps(d)
-#     f = open("文书json/裁判文书_%s.json" % m, mode="w")
-#     f.write(s)
-#     m=m+1;
-#     f.close()
+m=1;
+while m<118 :
+    text = ''
+    with open('文书text/裁判文书_%s.txt'% m,'r') as inf:
+        text=inf.read()
+    words = jieba.cut(text)
+    result=jieba.analyse.extract_tags(text, topK=20, withWeight=False, allowPOS=())
+    seg_list = pseg.cut(text)
+    words = jieba.tokenize(text)
+    for tk in words:
+        print("word:" + tk[0] +
+              " start:" + str(tk[1]) +
+              " end:" + str(tk[2]))
+        #将分析好的文本转为json
+    d=dict(zip(seg_list,words))
+    s = json.dumps(d)
+    f = open("文书json/裁判文书_%s.json" % m, mode="w")
+    f.write(s)
+    m=m+1;
+    f.close()
